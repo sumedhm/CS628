@@ -1,0 +1,2 @@
+The lockit.py file has used seed as time of creation of file. Whenever the same seeds are used for generating random integers, the same sequences are produced.
+We found the time of creation of secret.docx.enc, which gave us the seed used for encryption, but it did not decrypt and create a valid docx file. After randomly adding and subtracting some integers from the exact time, a seed with value (time+3) gave a valid docx file.

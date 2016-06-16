@@ -1,0 +1,5 @@
+This was a buffer overflow attack on an executable stack. The function `farthest` uses `memcpy` from which the variable `buf` can be overflown. We are using this vulnerability to spawn a shell, by using the shellcode given to us in Project 1.
+To overflow buf, count*sizeof(struct point) has to be a number(found to be near 14000), such that buf overflows into ebp and further into the return address of the function farthest. But count also has to less than MAX_POINTS for memcpy to be reachable. So, we choose a large negative number as count which causes an integer overflow and makes count*sizeof(struct) positive.
+So, using gdb we find out the difference between `ebp` and `buf` and create an input with lots of NOP slides, then shellcode, again NOP slides, and an address. This address is where the initial NOP slides would be. The number of NOPs are such that the random address to the shellcode comes exactly in the return address of the function.
+This changes the return address of the function farthest, thus executing the shellcode on function return which spawns a shell. And since the program has read access to flag file, we can read the flag through this shell.
+

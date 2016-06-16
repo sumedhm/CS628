@@ -1,0 +1,4 @@
+The file was opened in wireshark(version < 2.0), then flag was searched. It was found in the packet 1923 (where it was downloaded). After that the packet was exported as http object. Then we got a password protected 'flag.zip' file. So, fcrackzip was used to crack the password("letmein" found) for the same using dictionary attack using:
+`fcrackzip -Dp <dictionary> -uv <.zip file>`
+<dictionary>: dictionary word list, one of the dictionaries from github of user 'danielmiessler' worked.
+<.zip file> : in this case, flag.zip.

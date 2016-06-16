@@ -1,0 +1,3 @@
+cat /home/sumedh/1/flag.txt
+cat ./a.txt
+cat ./b.txt

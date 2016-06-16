@@ -1,0 +1,4 @@
+The site is still prone to sql injection but since there are no differences in the responses, this is an example of blind sql injection.
+So, we are using a query like:
+`admin" and if(password like "flag{%}", sleep(5), false); select * from users where username="a`
+This delays the response when the query within if is true, and has no delay if the statement within `if` is false. Using this we can figure out the password by a script similar to 9.

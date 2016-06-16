@@ -1,0 +1,8 @@
+As this program takes a user input and finally prints it. We guessed format string vulnerability can be used here. 
+Using %x could show the contents of the stack after `message`, hence the `file_flag`.
+But it only takes 39 characters. We tried using lots of `%x`s first to view contents of the stack, but it would only show half of the flag. %[n]$x, prints the [n]th word of the stack.
+So, we read the contents of the stack, 5 words at a time, using %1$x to %5$x, ..., upto %21$x,..%25$x, (due to limitation of size of input).
+This gave us the contents in hex format which on converting to ascii showed up the flag.
+The ascii string was something like this - Àÿÿ×<84>@(<82>Á÷ÿÜ$<98>ÿÿÕÜgalf809{58ab304a92533ec06e84e154ÿ$}d12%22%x2%x, where we can see `galf` which is start of the flag. On reversing every 4 characters, we could get the complete flag.
+
+**Reference: http://www.infond.fr/2010/07/tutorial-exploitation-format-string.html

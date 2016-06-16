@@ -1,0 +1,6 @@
+The php file is prone to sql injection. Thus we created 2 scripts, first to find the length of the password, by sending queries such as 
+`admin" AND length(password)=23 AND username="admin`
+from length.py and searching for "This user exists" in the response. This gave 23 as the length.
+Then in password.py, we sent requests similar to
+`admin" AND password LIKE "flag{__a%}" AND username="admin`
+to find the ith character from 0 to 17. Thus, finding the complete password.

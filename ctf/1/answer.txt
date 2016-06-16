@@ -1,0 +1,4 @@
+The binary dew runs the command `du -h '%s' 2`. This `du` binary is a disk usage analyzer and the command prints the size of a flag file provided. This binary also has the permissions to read the file flag.txt
+The OS finds the executables by looking at the environment variable $PATH sequentially and executes the first executable it finds with the name 'du'. 
+So we added an execuatble `du` in directory '1' which contains the command `cat flag.txt`. And added this directory to $PATH as prefix. 
+Thus, the dew binary when tries to run du command, the OS executes the 'du' executable in this directory, thus revealing the contents of flag.txt.

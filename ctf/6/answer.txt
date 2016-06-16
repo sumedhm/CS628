@@ -1,0 +1,9 @@
+We looked into the source of chal6, only different thing we could find was git's version string. So we tried printing the full version, but it did not yield anything.
+Then, we looked up https://172.27.20.32:8443/.git/, which showed up HINT.txt. This text file suggested us to use gitpillage.sh. By using this script, we got chal6.php file, which had the location of the flag file and information about available binaries. 
+But there was no output by the php file which could show anything about entered IP, so we set up a local server and tried various inputs and looked at the outputs. This finally led us to this type of input on local machine - 'google.com"; if [ condition ]; then exit; fi; /bin/caaat "/flags/sumedh.flag'. This would exit and show "Host reachable" if condition was true, and "Host down" if condition was false as there is no 'caaat' binary. But `exit` binary was not available on the server. Then, we tried using time delay instead of exit by using `for` loop  when true. By using a very large number of iterations, the php exec command fails due to timeout and the servers return "Host down" when true and "Host reachable" when false. This meant we could now ask the server true-false questions.
+Then we wrote scripts similar to challenge 10 to guess the password.
+(length.py) Used awk to find length of the flag by using the following condition:
+google.com"; if [ ' + str(i) + ' == $(/bin/cat "/flags/sumedh.flag" | awk "{print length}") ]; then { for(( c=1; c<=1000000; c++ )); do a=1; done }; fi; /bin/cat "/flags/sumedh.flag, where i was 0-40.
+(flag.py) The length was found to be 38, which helped us to grep patterns on the flag file and compare it with the cat output in the file `flag.py` which revealed the flag.
+
+

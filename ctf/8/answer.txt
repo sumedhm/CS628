@@ -1,0 +1,2 @@
+The site always showed not logged in. On checking the site cookies, we found a cookie `logged_in` with value 0. On sending request again with that cookie set to 1, it said to set two more headers, referrer adn browser. After setting that it said that the flag has been semt. On seeing the response headers, we found the flag. 
+File: spoof.py
